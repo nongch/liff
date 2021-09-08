@@ -93,8 +93,8 @@
         // alert('LINE Developers x Skooldio');
         await liff.init({ liffId: '1656404300-gWa8lBmX' });
         // liff.ready.then(() => {
-        getUserProfile();
-        getEnvironment();
+        await getEnvironment();
+        await getUserProfile();
         // getContext()
         // getFriendship()
         // createUniversalLink()
