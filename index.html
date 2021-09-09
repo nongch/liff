@@ -63,7 +63,19 @@
 
       async function sendMsg() {}
 
-      function getContext() {}
+      function getContext() {
+        // external browser = none
+        document.getElementById('type').append(liff.getContext().type);
+        // viewType = compact, tall, full
+        document.getElementById('viewType').append(liff.getContext().viewType);
+        // utouId = id ของห้องแชตแบบ 1-1
+        document.getElementById('utouId').append(liff.getContext().utouId);
+        // roomId = คือไอดีของห้องที่มีการแปะลิงค์ liff url แล้วเปิดลิงค์ จะทราบได้ว่าเปิดจากห้องไหน
+        // roomId ไม่ใช่ groupId เป็นห้องที่ดึงเพื่อนเข้ามาคุย ไม่ใช่สร้างเป็นชื่อ group
+        document.getElementById('roomId').append(liff.getContext().roomId);
+        // groupId คือเปิด liff url จาก group อะไร
+        document.getElementById('groupId').append(liff.getContext().groupId);
+      }
 
       async function getUserProfile() {
         const profile = await liff.getProfile();
@@ -98,7 +110,7 @@
         // liff.ready.then(() => {
         getEnvironment();
         getUserProfile();
-        // getContext()
+        getContext(); // context คือแหล่งที่มาของข้อมูลว่ามาจาก room, chatbot, external etc.
         // getFriendship()
         // createUniversalLink()
         // });
