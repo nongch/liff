@@ -59,7 +59,18 @@
 
       function openWindow() {}
 
-      async function getFriendship() {}
+      async function getFriendship() {
+        // ตรวจสอบว่าผู้ใช้เป็นเพื่อนกับ chatbot แล้วหรือยัง
+        const friend = await liff.getFriendship();
+        document.getElementById('friendship').append(friend.friendFlag);
+        if (!liff.friendFlag) {
+          if (
+            confirm('คุณยังไม่ได้เพิ่ม Bot เป็นเพื่อน ต้องการเพิ่มหรือไม่ ?')
+          ) {
+            window.location = 'https://line.me/R/ti/p/@178yfyoa';
+          }
+        }
+      }
 
       async function sendMsg() {
         // สามารถส่ง bubble ได้สูงสุด 5 bubble
@@ -125,7 +136,7 @@
         getEnvironment();
         getUserProfile();
         getContext(); // context คือแหล่งที่มาของข้อมูลว่ามาจาก room, chatbot, external etc.
-        // getFriendship()
+        getFriendship();
         // createUniversalLink()
         // });
       }
