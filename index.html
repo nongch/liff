@@ -55,9 +55,20 @@
 
       function closed() {}
 
-      async function scanCode() {}
+      async function scanCode() {
+        const result = liff.scanCode();
+        document.getElementById('scanCode').append(result.value);
+      }
 
-      function openWindow() {}
+      function openWindow() {
+        // เปิดได้ 2 รูปแบบคือ
+        // 1.in app browser (ในไลน์)
+        // 2.external browser
+        liff.openWindow({
+          url: 'https://line.me',
+          external: true,
+        });
+      }
 
       async function getFriendship() {
         // ตรวจสอบว่าผู้ใช้เป็นเพื่อนกับ chatbot แล้วหรือยัง
